@@ -1,0 +1,11 @@
+.table-container {
+    margin: 0 auto; 
+    border-collapse: collapse; 
+    width: 50%; 
+}
+  
+.table-container td, .table-container th {
+    border: 1px solid rgb(144, 227, 119); 
+    padding: 8px; 
+    text-align: center; 
+}
