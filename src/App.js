@@ -4,6 +4,7 @@ import { Routes, Route, Router } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import './App.css';
+import ListAllUsers from './components/users/ListAllUsers';
 
 const ROLES = {
   'User': 2001,
@@ -18,6 +19,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Layout />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/list-all-users' element={<ListAllUsers/>}/>
       </Routes>
     </BrowserRouter>
   );
