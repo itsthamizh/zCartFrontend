@@ -34,7 +34,12 @@ function ListAllUsers() {
 
 
   const deleteUser = id => {
-    axios.delete(`/delete-user/${id}`)
+    axios.delete(`/delete-user/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
     .then(response => response.json())
     .then(data => {
       // Handle response data if needed
@@ -79,15 +84,6 @@ function ListAllUsers() {
         </tbody>
       </table>
     </div>
-
-    // <div>
-    //   <h1>User List</h1>
-    //   <ul>
-    //     {users.map(user => (
-    //       <li key={user.id}>{user.name}</li>
-    //     ))}
-    //   </ul>
-    // </div>
   );
 }
 
