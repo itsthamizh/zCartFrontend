@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import ListAllUsers from './components/users/ListAllUsers';
 import UserRegistration from './components/users/UserRegistration';
+import Sidebar from './components/sideBar/SideBar';
 
 const ROLES = {
   'User': 2001,
@@ -17,12 +18,17 @@ const ROLES = {
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-          <Route path="/" element={<Layout />} />
-          <Route path="/login" element={<Login />} />
-          <Route path='/list-all-users' element={<ListAllUsers/>}/>
-          <Route path='/registration' element={<UserRegistration/>}/>
-      </Routes>
+      <div className="app">
+          <Sidebar/>
+          <div className="content">
+            <Routes>
+                <Route path="/" element={<Layout />} />
+                <Route path="/login" element={<Login />} />
+                <Route path='/list-all-users' element={<ListAllUsers/>}/>
+                <Route path='/registration' element={<UserRegistration/>}/>
+            </Routes>
+          </div>
+      </div>
     </BrowserRouter>
   );
 }

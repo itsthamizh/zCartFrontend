@@ -5,7 +5,9 @@ const Layout = () => {
         <main className="App">
             {/* <Outlet /> */}
             <div>
-                <h2>This is main page....!!!</h2>
+                <h1>WELCOME TO THE INVENTORY MANAGEMENT</h1>
+                <br></br>
+                <h3>..This is Application for Inventory Management..</h3>
             </div>
         </main>
     )
