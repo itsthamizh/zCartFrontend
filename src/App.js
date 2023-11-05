@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './App.css';
 import ListAllUsers from './components/users/ListAllUsers';
+import UserRegistration from './components/users/UserRegistration';
 
 const ROLES = {
   'User': 2001,
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Layout />} />
           <Route path="/login" element={<Login />} />
           <Route path='/list-all-users' element={<ListAllUsers/>}/>
+          <Route path='/registration' element={<UserRegistration/>}/>
       </Routes>
     </BrowserRouter>
   );
