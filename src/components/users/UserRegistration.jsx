@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../../api/axios';
 
 import '../../css/user/userRegistration.css';
 
@@ -24,7 +24,7 @@ const UserRegistration = () => {
     e.preventDefault();
     
     try {
-        const response = await axios.post('/api/users/register', formData);
+        const response = await axios.post('/api/v1/add-user', formData);
   
         if (response.status === 200) {
           alert('User registered successfully');
