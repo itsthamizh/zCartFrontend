@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-import '../css/login.css';
+import '../../css/session/login.css';
 
-import axios from '../api/axios';
+import axios from '../../api/axios';
 const LOGIN_URL = '/auth';
 
 const Login = () => {

@@ -1,0 +1,10 @@
+.user-details {
+    position: fixed;
+    top: 50px; 
+    right: 20px; 
+    padding: 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
