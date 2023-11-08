@@ -1,5 +1,5 @@
-import Login from './components/Login';
-import Layout from './components/Layout';
+import Login from './components/session/Login';
+import Layout from './components/home/Layout';
 import { Routes, Route, Router } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ import './App.css';
 import ListAllUsers from './components/users/ListAllUsers';
 import UserRegistration from './components/users/UserRegistration';
 import Sidebar from './components/sideBar/SideBar';
+import TopBar from './components/topBar/TopBar';
 
 const ROLES = {
   'User': 2001,
@@ -19,6 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
+          <TopBar />
           <Sidebar/>
           <div className="content">
             <Routes>
