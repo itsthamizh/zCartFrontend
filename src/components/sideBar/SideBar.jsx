@@ -9,6 +9,7 @@ const Sidebar = () => {
         <img src={logo} alt="Logo" className="logo" />
         <ul className='ul-class'>
             <li><Link to="/">Home</Link></li>
+            <li><Link to="/list-all-catagory">Category</Link></li>
             <li><Link to="/list-all-product">Products</Link></li>
             <li><Link to="/list-all-users">Users</Link></li>
             <li><Link to="/registration">User Registration</Link></li>
