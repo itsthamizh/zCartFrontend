@@ -8,6 +8,7 @@ import ListAllUsers from './components/users/ListAllUsers';
 import UserRegistration from './components/users/UserRegistration';
 import Sidebar from './components/sideBar/SideBar';
 import TopBar from './components/topBar/TopBar';
+import ListAllCatagory from './components/category/ListAllCatagory';
 
 const ROLES = {
   'User': 2001,
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path='/list-all-users' element={<ListAllUsers/>}/>
                 <Route path='/registration' element={<UserRegistration/>}/>
+                <Route path='/list-all-catagory' element={<ListAllCatagory/>}/>
             </Routes>
           </div>
       </div>
