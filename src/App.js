@@ -1,6 +1,6 @@
 import Login from './components/session/Login';
 import Layout from './components/home/Layout';
-import { Routes, Route, Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import './App.css';
@@ -9,12 +9,14 @@ import UserRegistration from './components/users/UserRegistration';
 import Sidebar from './components/sideBar/SideBar';
 import TopBar from './components/topBar/TopBar';
 import ListAllCatagory from './components/category/ListAllCatagory';
+import ListAllProducts from './components/product/ListAllProducts';
+import AddCategory from './components/category/AddCategory';
 
-const ROLES = {
-  'User': 2001,
-  'Editor': 1984,
-  'Admin': 5150
-}
+// const ROLES = {
+//   'User': 2001,
+//   'Editor': 1984,
+//   'Admin': 5150
+// }
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
                 <Route path='/list-all-users' element={<ListAllUsers/>}/>
                 <Route path='/registration' element={<UserRegistration/>}/>
                 <Route path='/list-all-catagory' element={<ListAllCatagory/>}/>
+                <Route path='/list-all-product' element={<ListAllProducts/>}/>
+                <Route path='/add-category' element={<AddCategory/>}/>
             </Routes>
           </div>
       </div>
