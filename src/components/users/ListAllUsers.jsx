@@ -51,6 +51,11 @@ function ListAllUsers() {
   return (
 
     <div className='table-container'>
+      <br></br>
+      <br></br>
+      <div>All Users List </div>
+      <br></br>
+
       <table className='table-header'>
         <thead>
           <tr>

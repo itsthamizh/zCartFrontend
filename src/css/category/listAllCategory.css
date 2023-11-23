@@ -34,3 +34,8 @@
     color: #333;
   }
   
+  .add-category-button {
+    position: absolute;
+    top: 100px;
+    right: 40px;
+  }
