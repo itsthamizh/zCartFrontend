@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import axios from '../../api/axios';
 
+import Select from 'react-select';
 import '../../css/user/userRegistration.css';
+
+const rolesOptions = [
+  { value: 'Admin', label: 'Admin' },
+  { value: 'User', label: 'User' },
+  { value: 'Moderator', label: 'Moderator' },
+];
+
 
 const UserRegistration = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +17,15 @@ const UserRegistration = () => {
     username: '',
     password: '',
     mobileNumber : '',
-    roles : ''
+    roles : []
   });
+
+  const handleRoleChange = (selectedRoles) => {
+    setFormData({
+      ...formData,
+      roles: selectedRoles.map((role) => role.value),
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -86,13 +101,12 @@ const UserRegistration = () => {
         </div>
         <div className="form-group">
           <label htmlFor="roles">Roles</label>
-          <input
-            type="text"
-            name="roles"
-            value={formData.roles}
-            onChange={handleChange}
-            required
-          />
+            <Select
+              isMulti
+              options={rolesOptions}
+              value={rolesOptions.filter((role) => formData.roles.includes(role.value))}
+              onChange={handleRoleChange}
+            />
         </div>
         <button type="submit">Register</button>
       </form>

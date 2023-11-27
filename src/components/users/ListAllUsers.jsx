@@ -53,7 +53,9 @@ function ListAllUsers() {
     <div className='table-container'>
       <br></br>
       <br></br>
-      <div>All Users List </div>
+      <div>
+        <h1>All Users List </h1>
+      </div>
       <br></br>
 
       <table className='table-header'>
