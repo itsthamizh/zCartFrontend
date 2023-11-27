@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../api/axios';
 import { Link } from 'react-router-dom';
 import '../../css/category/listAllCategory.css';
-// import { useNavigate } from 'react-router-dom';
 
 
 function ListAllCategory() {
@@ -10,7 +9,6 @@ function ListAllCategory() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,13 +32,11 @@ function ListAllCategory() {
   };
 
   
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = categories.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
   const handleItemsPerPageChange = (e) => {
     setItemsPerPage(parseInt(e.target.value, 10));
@@ -56,7 +52,7 @@ function ListAllCategory() {
           <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
             <option value={5}>5</option>
             <option value={10}>10</option>
-            {/* Add more options as needed */}
+            <option value={20}>20</option>
           </select>
         </label>
         {currentItems.map((category, index) => (

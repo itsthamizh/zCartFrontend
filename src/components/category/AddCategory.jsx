@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from '../../api/axios';
 import '../../css/category/addCategory.css';
 
+
 function AddCategory () {
     const [formData, setFormData] = useState({
       // Define fields 
@@ -20,6 +21,7 @@ function AddCategory () {
 
     try {
       const response = await axios.post('/add-category', formData);
+      alert('Category Added successfully');
 
       console.log(response.data);
     } catch (error) {
@@ -28,9 +30,16 @@ function AddCategory () {
   };
   return (
     <div className="form-container">
+      <div>
+        <h2>Add Category</h2> 
+      </div>
+
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className='addcategory-label'>
           CategoryName:
+          <br></br>
+          <br></br>
+      
           <input
             type="text"
             name="categoryName"
@@ -38,7 +47,8 @@ function AddCategory () {
             onChange={handleChange}
           />
         </label>
-
+      
+        <br></br>
         <button type="submit">Submit</button>
       </form>
     </div>
