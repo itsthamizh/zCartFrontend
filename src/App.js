@@ -11,6 +11,7 @@ import TopBar from './components/topBar/TopBar';
 import ListAllCatagory from './components/category/ListAllCatagory';
 import ListAllProducts from './components/product/ListAllProducts';
 import AddCategory from './components/category/AddCategory';
+import AddProduct from './components/product/AddProduct';
 
 // const ROLES = {
 //   'User': 2001,
@@ -34,6 +35,7 @@ function App() {
                 <Route path='/list-all-catagory' element={<ListAllCatagory/>}/>
                 <Route path='/list-all-product' element={<ListAllProducts/>}/>
                 <Route path='/add-category' element={<AddCategory/>}/>
+                <Route path='/add-product' element={<AddProduct/>}/>
             </Routes>
           </div>
       </div>
