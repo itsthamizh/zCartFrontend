@@ -10,46 +10,52 @@ const rolesOptions = [
   { value: 'Moderator', label: 'Moderator' },
 ];
 
-
-const UserRegistration = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    username: '',
-    password: '',
-    mobileNumber : '',
-    roles : []
-  });
+  const UserRegistration = () => {
+    const [formData, setFormData] = useState({
+      user : {
+        name: '',
+        username: '',
+        password: '',
+        mobileNumber : '',
+        roles : []
+      }
+    });
 
   const handleRoleChange = (selectedRoles) => {
     setFormData({
-      ...formData,
-      roles: selectedRoles.map((role) => role.value),
+      user: {
+        ...formData.user,
+        roles: selectedRoles ? selectedRoles.map((role) => role.value) : [],
+      },
     });
   };
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
+  
     setFormData({
-      ...formData,
-      [name]: value,
+      user: {
+        ...formData.user,
+        [name]: value,
+      },
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    try {
-        const response = await axios.post('/api/v1/add-user', formData);
   
-        if (response.status === 200) {
-          alert('User registered successfully');
-        } else {
-          throw new Error('Error registering user');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Error registering user');
+    try {
+      const response = await axios.post('/add-user', formData);
+  
+      if (response.status === 200) {
+        alert('User registered successfully');
+      } else {
+        throw new Error('Error registering user');
       }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error registering user');
+    }
   };
 
   return (
@@ -77,7 +83,6 @@ const UserRegistration = () => {
             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
             title="Please enter a valid email address"
         />
-        {/* <small className="text-muted">must be in @ </small> */}
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
@@ -104,7 +109,7 @@ const UserRegistration = () => {
             <Select
               isMulti
               options={rolesOptions}
-              value={rolesOptions.filter((role) => formData.roles.includes(role.value))}
+              value={rolesOptions.filter((role) => formData.user && formData.user.roles && formData.user.roles.includes(role.value))}
               onChange={handleRoleChange}
             />
         </div>
