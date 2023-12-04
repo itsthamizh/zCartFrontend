@@ -5,7 +5,6 @@ import '../../css/category/addCategory.css';
 
 function AddCategory () {
     const [formData, setFormData] = useState({
-      // Define fields 
       categoryName: ''
     });
   
