@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../../api/axios';
-
+import { Link } from 'react-router-dom';
 import '../../css/product/listAllProducts.css'
 
 const ListAllProducts = () => {
@@ -82,6 +82,13 @@ const ListAllProducts = () => {
             {index + 1}
           </button>
         ))}
+      </div>
+
+      {/* Add Product Button */}
+      <div className="add-product-button">
+      <Link to="/add-product">
+        <button className="button">Add Product</button>
+      </Link>
       </div>
     </div>
   );
