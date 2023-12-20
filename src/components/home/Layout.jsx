@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom"
 import '../../css/home/home.css';
 
 const Layout = () => {
@@ -14,4 +13,4 @@ const Layout = () => {
     )
 }
 
-export default Layout
+export default Layout;

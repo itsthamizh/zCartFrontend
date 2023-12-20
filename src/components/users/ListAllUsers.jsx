@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../../api/axios';
+import api from '../../api/axios';
 
 import '../../css/user/listAllUsers.css';
 
 function ListAllUsers() {
   const [users, setUsers] = useState([]);
 
+  console.log(api);
+
   useEffect(() => {
-    axios.get('/list-all-users')
+    api.get('/list-all-users')
       .then(response => {
 
         console.log(JSON.stringify(response));
@@ -22,7 +24,7 @@ function ListAllUsers() {
 
 
   const updateUser = (id, updatedData) => {
-    axios.put(`/update-user/${id}`)
+    api.put(`/update-user/${id}`)
     .then(response => response.json())
     .then(data => {
       // Handle response data if needed
@@ -34,7 +36,7 @@ function ListAllUsers() {
 
 
   const deleteUser = id => {
-    axios.delete(`/delete-user/${id}`, {
+    api.delete(`/delete-user/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

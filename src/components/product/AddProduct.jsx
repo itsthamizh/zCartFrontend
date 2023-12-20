@@ -7,6 +7,7 @@ function AddProduct () {
     const [categories, setCategories] = useState([]);
 
     const [formData, setFormData] = useState({
+        category_id : '',
         productName: '',
         price : '',
         discount : ''
@@ -23,6 +24,7 @@ function AddProduct () {
         e.preventDefault();
 
         try {
+            console.log(formData)
             const response = await axios.post('/add-product', formData);
             alert('Product Added successfully');
             console.log(response.data);
@@ -37,6 +39,7 @@ function AddProduct () {
         try {
             const response = await axios.get('/list-all-category');
             setCategories(response.data);
+            console.log(response.data)
         }
         catch (error) {
             console.error('Error fetching categories:', error);
@@ -54,20 +57,20 @@ function AddProduct () {
 
       <form onSubmit={handleSubmit}>
         
-        <label className='addcategory-label'>
+      <label className='addcategory-label'>
             Select Category:
             <br />
             <br />
             <select
-                name="categoryName"
-                value={formData.categoryName}
+                name="category_id"
+                value={formData.category_id}
                 onChange={handleChange}
             >
                 <option value="">Select a category</option>
                 {categories.map(category => (
-                <option key={category.category_id} value={category.categoryName}>
-                    {category.categoryName}
-                </option>
+                    <option key={category.category_id} value={category.categoryID}>
+                        {category.categoryName}
+                    </option>
                 ))}
             </select>
         </label>
