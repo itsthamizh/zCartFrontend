@@ -11,40 +11,55 @@ import ListAllCatagory from './components/category/ListAllCatagory';
 import ListAllProducts from './components/product/ListAllProducts';
 import AddCategory from './components/category/AddCategory';
 import AddProduct from './components/product/AddProduct';
+// import LoginLayout from './components/session/LoginLayout';
 
 
-// const ROLES = {
-//   'User': 2001,
-//   'Editor': 1984,
-//   'Admin': 5150
-// }
+function LoginLayout({ children }) {
+  return (
+    <div className="login-layout">
+      {children}
+    </div>
+  );
+}
 
 
 function App() {
+
+  const isAuthenticated = localStorage.getItem('token') ?? false;
+  
   return (
     <BrowserRouter>
-      <div className="app">
-        <TopBar />
-        <Sidebar />
-        <div className="content">
+    
+    <div className="app">
+         {isAuthenticated ? (
+          <>
+          <div className="app">
+            <TopBar />
+            <Sidebar />
+            <div className="content">
+              <Routes>
+              <Route path="/" exact element={<Layout />} />
+              <Route path="/login" element={
+                  <LoginLayout>
+                      <Login />
+                  </LoginLayout>} />
+              </Routes>
 
-          <Routes>
-            <Route path="/" exact element={<Layout/>} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/test" element={<ProtectedRouter />} />
-          </Routes>
-          
-          <ProtectedRouter>
-              <Route path="/list-all-users" element={<ListAllUsers />} />
-              <Route path="/registration" element={<UserRegistration />} />
-              <Route path="/list-all-catagory" element={<ListAllCatagory />} />
-              <Route path="/list-all-product" element={<ListAllProducts />} />
-              <Route path="/add-category" element={<AddCategory />} />
-              <Route path="/add-product" element={<AddProduct />} />
-          </ProtectedRouter>
-          
-        </div>
-      </div>
+              <ProtectedRouter isAuthenticated={isAuthenticated}>
+                <Route path="/list-all-users" element={<ListAllUsers />} />
+                <Route path="/registration" element={<UserRegistration />} />
+                <Route path="/list-all-catagory" element={<ListAllCatagory />} />
+                <Route path="/list-all-product" element={<ListAllProducts />} />
+                <Route path="/add-category" element={<AddCategory />} />
+                <Route path="/add-product" element={<AddProduct />} />
+              </ProtectedRouter>
+            </div>
+          </div>
+          </>
+        ) : (
+          <Login />
+        )}
+      </div>        
     </BrowserRouter>
   );
 }

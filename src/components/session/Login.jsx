@@ -3,6 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../../css/session/login.css';
 import axios from '../../api/axios';
+import { Navigate } from "react-router-dom";
 
 const LOGIN_URL = '/signin';
 
@@ -43,22 +44,15 @@ const Login = () => {
 
         const accessToken = response?.data?.token;
         const roles = response?.data?.roles;
-        
-        console.log("access token : ")
-        console.log(accessToken)
-
-        console.log("role : ")
-        console.log(roles)
-
-
         localStorage.setItem('token', accessToken);
-
         axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
-        setAuth({ username, password, roles, accessToken });
-        setUser('');
-        setPwd('');
-        navigate(from, { replace: true });
+        // setAuth({ username, password, roles, accessToken });
+        // setUser('');
+        // setPwd('');
+        // navigate(from, { replace: true });
+        
+        window.location.replace('/');
       }
       else {
         setErrMsg('Invalid Response');
@@ -70,13 +64,16 @@ const Login = () => {
       if (!err?.response) {
         setErrMsg('No Server Response');
         alert('No Server Response');
-      } else if (err.response?.status === 400) {
+      } 
+      else if (err.response?.status === 400) {
         setErrMsg('Missing Username or Password');
         alert('Missing Username or Password');
-      } else if (err.response?.status === 401) {
+      } 
+      else if (err.response?.status === 401) {
         setErrMsg('Unauthorized');
         alert('Unauthorized');
-      } else {
+      }
+      else {
         setErrMsg('Login Failed');
         alert('Login Failed');
       }
